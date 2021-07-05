@@ -1,5 +1,43 @@
-let Prova1 = 50;
-let Prova2 = 70; 
+const acrobazia = 50,
+    addestrareAnimali = 50,
+    artigianato = 90,
+    artistaDellaFuga = 50,
+    ascoltare = 50,
+    Camuffare = 50,
+    cavalcare = 50,
+    cercare = 50,
+    concentrazione = 40,
+    conoscenze = 90,
+    decifrareScritture = 50,
+    diplomazia = 50,
+    disattivareCongegni = 40,
+    empatiaAnimale = 30,
+    equilibrio = 50,
+    falsificare = 90,
+    guarire = 40,
+    intimidire = 60,
+    intrattenere = 40,
+    muoversiSilenziosamente = 50,
+    nascondersi = 50,
+    nuotare = 50,
+    osservare = 50,
+    percepireIntenzioni = 40,
+    professione = 30,
+    raccogliereInformazioni = 70,
+    raggirare = 50,
+    rapiditaDiMano = 50,
+    saltare = 50,
+    sapienzaMagica = 40,
+    scalare = 40,
+    scassinareSerrature = 40,
+    sopravvivenza = 50,
+    utilizzareCorde = 50,
+    utilizzareOggettiMagici = 50,
+    valutare = 50,
+    combattimentoAssist = 40,
+    combattimentoUccisione = 80;
 
-let Result = Prova1 = Prova2;
-console.log(` Il tuo punteggio: ${Result}`);
+let Somma = combattimentoAssist + utilizzareOggettiMagici + osservare + ascoltare + sapienzaMagica + osservare + cercare + sapienzaMagica + concentrazione + osservare + sapienzaMagica,
+    Risultato = (Somma * 2);
+
+console.log(` Il tuo punteggio: ${Risultato}`);
