@@ -1,4 +1,4 @@
-const acrobazia = 50,
+/* const acrobazia = 50,
     addestrareAnimali = 50,
     artigianato = 90,
     artistaDellaFuga = 50,
@@ -36,8 +36,42 @@ const acrobazia = 50,
     valutare = 50,
     combattimentoAssist = 40,
     combattimentoUccisione = 80;
+*/
 
-let Somma = combattimentoAssist + utilizzareOggettiMagici + osservare + ascoltare + sapienzaMagica + osservare + cercare + sapienzaMagica + concentrazione + osservare + sapienzaMagica,
-    Risultato = (Somma * 2);
+let abilita = '{"abilitaDnD": ['+
+   '{"name":"acrobazia", "value":50},'+ 
+   '{"name":"conoscenze", "value":30},'+ 
+   '{"name":"osservare", "value":5}, '+
+   '{"name":"cercare", "value":1}, '+
+   '{"name":"combattimento", "value":100}, '+
+   '{"name":"valutare", "value":70}, '+
+   '{"name":"magia", "value":8}]}';
 
-console.log(` Il tuo punteggio: ${Risultato}`);
+let abilitaObj = JSON.parse(abilita);
+
+
+let abilitaArr = abilitaObj.abilitaDnD;
+
+console.log(abilitaArr[0].name)
+let elementoListaAzioni = document.getElementById("lista-azioni");
+
+for (let i = 0; i < abilitaArr.length; i++ ) {
+    //console.log("Abilita: " + abilitaArr[i].name + ", Exp: " + abilitaArr[i].value);
+    // console.log(`Abilita': ${abilitaArr[i].name}, Exp: ${abilitaArr[i].value}`);
+    let paragrafo = document.createElement("P");
+    paragrafo.innerText = `Abilita': ${abilitaArr[i].name}, Exp: ${abilitaArr[i].value}`;
+    elementoListaAzioni.appendChild(paragrafo);
+};
+
+/* let paragrafo = document.createElement("P");
+paragrafo.innerText = "prova2";
+document.getElementById("lista-azioni").appendChild(paragrafo); */
+
+// document.getElementById("lista-azioni").innerHTML = "<p>Prova</p>";
+
+
+/*
+for (let cento = 0; cento < 100; cento++) {
+    console.log(cento);
+    
+} */
