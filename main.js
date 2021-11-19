@@ -38,51 +38,52 @@
     combattimentoUccisione = 80;
 */
 
+function leggiListaAbilitaDnD() {
+    let abilita = '{"abilitaDnD": [' +
+    '{"name":"acrobazia", "value":50},' +
+    '{"name":"conoscenze", "value":30},' +
+    '{"name":"osservare", "value":5}, ' +
+    '{"name":"cercare", "value":1}, ' +
+    '{"name":"combattimento", "value":100}, ' +
+    '{"name":"valutare", "value":70}, ' +
+    '{"name":"magia", "value":8}]}';
+
+    let trasformaAbilitainObj = JSON.parse(abilita);
+
+    return trasformaAbilitainObj.abilitaDnD;
+}
+
+// Versione JQuery
+
+function creaListaJq(listaAbilita) {
+    let elementoListaAzioniJq = $("#lista-azioni-jq");
+    for (let i = 0; i < listaAbilita.length; i++) {
+        elementoListaAzioniJq.append(`<li>Abilita': ${listaAbilita[i].name}, Exp: ${listaAbilita[i].value}</li>`);
+    };
+
+};
+
+// Versione JS
+
+function creaListaJs(ListaAbilita) {
+    let elementoListaAzioni = document.getElementById("lista-azioni-js");
+    for (let i = 0; i < ListaAbilita.length; i++) {
+        let paragrafo = document.createElement("li");
+        paragrafo.innerText = `Abilita': ${ListaAbilita[i].name}, Exp: ${ListaAbilita[i].value}`;
+        elementoListaAzioni.appendChild(paragrafo);
+    };
+}
+
+ 
+
+
 
 $(document).ready(function () {
 
-    let abilita = '{"abilitaDnD": [' +
-        '{"name":"acrobazia", "value":50},' +
-        '{"name":"conoscenze", "value":30},' +
-        '{"name":"osservare", "value":5}, ' +
-        '{"name":"cercare", "value":1}, ' +
-        '{"name":"combattimento", "value":100}, ' +
-        '{"name":"valutare", "value":70}, ' +
-        '{"name":"magia", "value":8}]}';
-
-    let abilitaObj = JSON.parse(abilita);
-
-
-    let abilitaArr = abilitaObj.abilitaDnD;
-
-    console.log(abilitaArr[0].name)
-    let elementoListaAzioni = document.getElementById("lista-azioni-js");
-
-    for (let i = 0; i < abilitaArr.length; i++) {
-        //console.log("Abilita: " + abilitaArr[i].name + ", Exp: " + abilitaArr[i].value);
-        // console.log(`Abilita': ${abilitaArr[i].name}, Exp: ${abilitaArr[i].value}`);
-        let paragrafo = document.createElement("P");
-        paragrafo.innerText = `Abilita': ${abilitaArr[i].name}, Exp: ${abilitaArr[i].value}`;
-        elementoListaAzioni.appendChild(paragrafo);
-    };
-
-
-
-
-    // Versione JQuery
-
-    $("#lista-azioni-jq").append('<li>Prova</li>');
-
-/*
-
-    for (let i = 0; i < abilitaArr.length; i++) {
-        //console.log("Abilita: " + abilitaArr[i].name + ", Exp: " + abilitaArr[i].value);
-        // console.log(`Abilita': ${abilitaArr[i].name}, Exp: ${abilitaArr[i].value}`);
-        $("#lista-azioni-jq").append($(<li>a</li>))
-        $el = $("li");
-        $el.innerText = `Abilita': ${abilitaArr[i].name}, Exp: ${abilitaArr[i].value}`;
-        $("#lista-azioni-jq").append($el);
-    };
-*/
+    let listaAbilitaDnD = leggiListaAbilitaDnD();
+   
+    creaListaJs(listaAbilitaDnD);
+    creaListaJq(listaAbilitaDnD);
+   
 });
 
