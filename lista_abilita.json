@@ -1,0 +1,8 @@
+{"cibo": [
+    {"id": 0, "name":"cioccolata", "value":50},
+    {"name":"tisana", "value":30},
+    {"name":"cereali", "value":5},
+    {"name":"biscotti", "value":1},
+    {"name":"avena", "value":100},
+    {"name":"zucchero", "value":70},
+    {"name":"miele", "value":8}]}
