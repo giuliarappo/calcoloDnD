@@ -1,3 +1,12 @@
+// XMLHTT REQUEST
+
+var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "lista_abilita.json", false);
+  xhttp.send();
+  let listaJson = JSON.parse(xhttp.response);
+  let listaCibo = listaJson.cibo;
+  console.log(listaCibo[3].name);
+
 /* const acrobazia = 50,
     addestrareAnimali = 50,
     artigianato = 90,
@@ -36,7 +45,7 @@
     valutare = 50,
     combattimentoAssist = 40,
     combattimentoUccisione = 80;
-*/
+
 
 function leggiListaAbilitaDnD() {
     let abilita = '{"abilitaDnD": [' +
@@ -87,3 +96,4 @@ $(document).ready(function () {
    
 });
 
+*/
