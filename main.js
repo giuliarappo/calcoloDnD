@@ -1,5 +1,5 @@
 // XMLHTT REQUEST
-
+/*
 var xhttp = new XMLHttpRequest();
   xhttp.open("GET", "lista_abilita.json", false);
   xhttp.send();
@@ -7,7 +7,7 @@ var xhttp = new XMLHttpRequest();
   let listaCibo = listaJson.cibo;
   console.log(listaCibo[3].name);
 
-/* const acrobazia = 50,
+ const acrobazia = 50,
     addestrareAnimali = 50,
     artigianato = 90,
     artistaDellaFuga = 50,
@@ -45,19 +45,13 @@ var xhttp = new XMLHttpRequest();
     valutare = 50,
     combattimentoAssist = 40,
     combattimentoUccisione = 80;
-
+*/
 
 function leggiListaAbilitaDnD() {
-    let abilita = '{"abilitaDnD": [' +
-    '{"name":"acrobazia", "value":50},' +
-    '{"name":"conoscenze", "value":30},' +
-    '{"name":"osservare", "value":5}, ' +
-    '{"name":"cercare", "value":1}, ' +
-    '{"name":"combattimento", "value":100}, ' +
-    '{"name":"valutare", "value":70}, ' +
-    '{"name":"magia", "value":8}]}';
-
-    let trasformaAbilitainObj = JSON.parse(abilita);
+    let richiesta = new XMLHttpRequest;
+    richiesta.open("GET", "lista_abilita.json", false);
+    richiesta.send();
+    let trasformaAbilitainObj = JSON.parse(richiesta.response);
 
     return trasformaAbilitainObj.abilitaDnD;
 }
@@ -96,4 +90,3 @@ $(document).ready(function () {
    
 });
 
-*/
