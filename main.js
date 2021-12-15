@@ -1,92 +1,69 @@
-// XMLHTT REQUEST
-/*
-var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "lista_abilita.json", false);
-  xhttp.send();
-  let listaJson = JSON.parse(xhttp.response);
-  let listaCibo = listaJson.cibo;
-  console.log(listaCibo[3].name);
+// richiesta htt versione JS
 
- const acrobazia = 50,
-    addestrareAnimali = 50,
-    artigianato = 90,
-    artistaDellaFuga = 50,
-    ascoltare = 50,
-    Camuffare = 50,
-    cavalcare = 50,
-    cercare = 50,
-    concentrazione = 40,
-    conoscenze = 90,
-    decifrareScritture = 50,
-    diplomazia = 50,
-    disattivareCongegni = 40,
-    empatiaAnimale = 30,
-    equilibrio = 50,
-    falsificare = 90,
-    guarire = 40,
-    intimidire = 60,
-    intrattenere = 40,
-    muoversiSilenziosamente = 50,
-    nascondersi = 50,
-    nuotare = 50,
-    osservare = 50,
-    percepireIntenzioni = 40,
-    professione = 30,
-    raccogliereInformazioni = 70,
-    raggirare = 50,
-    rapiditaDiMano = 50,
-    saltare = 50,
-    sapienzaMagica = 40,
-    scalare = 40,
-    scassinareSerrature = 40,
-    sopravvivenza = 50,
-    utilizzareCorde = 50,
-    utilizzareOggettiMagici = 50,
-    valutare = 50,
-    combattimentoAssist = 40,
-    combattimentoUccisione = 80;
-*/
+ function result(response) {
 
-function leggiListaAbilitaDnD() {
-    let richiesta = new XMLHttpRequest;
-    richiesta.open("GET", "lista_abilita.json", false);
-    richiesta.send();
-    let trasformaAbilitainObj = JSON.parse(richiesta.response);
+    let listaAbilitaDnD = JSON.parse(response);
+    let arrayListaDnD = listaAbilitaDnD.abilitaDnD;
+    forListaDnD(arrayListaDnD);
+};
 
-    return trasformaAbilitainObj.abilitaDnD;
-}
+function richiestaFile(myCallback) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "lista_abilita.json", false);
+    xhttp.onload = function() {
+        if (xhttp.status == 200) {
+            myCallback(xhttp.response);
+        } else {
+            console.log("ERROR")
+        };
+    };
+    xhttp.send();
+    
+    
+};
+
+// for
+
+function forListaDnD(gruppoListaDnD) {
+    let elementoListaAzioni = document.getElementById("lista-azioni-js");
+    for (let i = 0; i < gruppoListaDnD.length; i++) {
+    let paragrafo = document.createElement("li");
+    paragrafo.innerText = `Abilita': ${gruppoListaDnD[i].name}, Exp: ${gruppoListaDnD[i].value}`;
+    elementoListaAzioni.appendChild(paragrafo);
+    }
+};
 
 // Versione JQuery
 
 function creaListaJq(listaAbilita) {
-    let elementoListaAzioniJq = $("#lista-azioni-jq");
+    let elementoListaAzioniJq = $(".prova2");
     for (let i = 0; i < listaAbilita.length; i++) {
         elementoListaAzioniJq.append(`<li>Abilita': ${listaAbilita[i].name}, Exp: ${listaAbilita[i].value}</li>`);
     };
 
 };
 
-// Versione JS
-
-function creaListaJs(ListaAbilita) {
-    let elementoListaAzioni = document.getElementById("lista-azioni-js");
-    for (let i = 0; i < ListaAbilita.length; i++) {
-        let paragrafo = document.createElement("li");
-        paragrafo.innerText = `Abilita': ${ListaAbilita[i].name}, Exp: ${ListaAbilita[i].value}`;
-        elementoListaAzioni.appendChild(paragrafo);
-    };
-}
-
- 
+// richiesta htt versione JQ
 
 
 
-$(document).ready(function () {
+$(document).ready(function() {
+    richiestaFile(result);
+    
+    $.get("lista_abilita_jq.json", function (lista_json) {
+        let listaDnD = lista_json.abilitaDnD;
+        creaListaJq(listaDnD);
+    });
 
-    let listaAbilitaDnD = leggiListaAbilitaDnD();
-   
-    creaListaJs(listaAbilitaDnD);
-    creaListaJq(listaAbilitaDnD);
-   
+    $.ajax({url: "lista_abilita_ajax.json", 
+        success: function(lista_json) {
+        console.log(lista_json.abilitaDnD);
+    }})
+
+
 });
+
+
+
+
 
