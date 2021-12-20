@@ -35,29 +35,38 @@ function forListaDnD(gruppoListaDnD) {
 
 // Versione JQuery
 
-function creaListaJq(listaAbilita) {
-    let elementoListaAzioniJq = $(".prova2");
-    for (let i = 0; i < listaAbilita.length; i++) {
-        elementoListaAzioniJq.append(`<li>Abilita': ${listaAbilita[i].name}, Exp: ${listaAbilita[i].value}</li>`);
-    };
 
-};
 
 // richiesta htt versione JQ
 
 
 
 $(document).ready(function() {
-    richiestaFile(result);
+    // richiestaFile(result);
     
-    $.get("lista_abilita_jq.json", function (lista_json) {
+    /* $.get("lista_abilita_jq.json", function (lista_json) {
         let listaDnD = lista_json.abilitaDnD;
         creaListaJq(listaDnD);
-    });
+    }); */
+    function creaListaJq(listaAbilita) {
+        let elementoListaAzioniJq = $("#lista-azioni-jq");
+        for (let i = 0; i < listaAbilita.length; i++) {
+            elementoListaAzioniJq.append(`<li>Abilita': ${listaAbilita[i].name}, Exp: ${listaAbilita[i].value}</li>`);
+        };
+    
+    };
+    
+  
 
-    $.ajax({url: "lista_abilita_ajax.json", 
+    $.ajax({
+        
+        url: "lista_abilita_ajax.json",
+        dataType: "json",
+        method: "get", 
+        crossDomain: true,
         success: function(lista_json) {
-        console.log(lista_json.abilitaDnD);
+            let listaAbilita = lista_json.abilitaDnD;
+            creaListaJq(listaAbilita);
     }})
 
 
